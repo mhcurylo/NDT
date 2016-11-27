@@ -15,6 +15,7 @@
                  [org.clojure/core.async "0.2.391"
                   :exclusions [org.clojure/tools.reader]]
                  [datascript "0.15.5"]
+                 [secretary "1.2.3"]
                  [rum "0.10.5"]
                  [environ "1.0.3"]]
 

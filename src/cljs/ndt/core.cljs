@@ -5,15 +5,16 @@
     [datascript.core :as d]
     [ndt.ui :as ui]
     [ndt.eb :as eb]
-    [ndt.ds :as ds]))
+    [ndt.ds :as ds]
+    [ndt.routes :as routes]))
 
 (enable-console-print!)
 
-(ui/mountndt ui/loginpage ds/conn eb/event-bus)
+(ui/mountndt ui/routerpage ds/conn eb/event-bus)
 
 (d/listen! ds/conn
    (fn [tx-data]
-     (ui/mountndt ui/loginpage ds/conn eb/event-bus)))
+     (ui/mountndt ui/routerpage ds/conn eb/event-bus)))
 
-;;(defn fig-reload-hook []
-;; ((ui/mountndt ui/loginpage ds/conn eb/event-bus))
+(routes/inithistory)
+

@@ -5,6 +5,9 @@
     [datascript.core :as d]
     [ndt.ds :as ds]))
 
+(defn currentpage [db]
+  (:app/page (d/entity @db [:app/title "ndt"])))
+
 (defn setnbsp []
      {:dangerouslySetInnerHTML {:__html "&nbsp;"}})
 
@@ -40,6 +43,16 @@
 (rum/defc loginpage [db bus]
      [:.row [:.three.columns (setnbsp)]
             [:.six.columns (ndtlogo) (loginform db bus)]])
+
+(rum/defc homepage [db bus]
+     [:.row [:.three.columns]
+            [:.six-columns [:h1 "Logged in, you are home."]]])
+
+(rum/defc routerpage [db bus]
+     (let [page (case (currentpage db) 
+                  "loginpage" loginpage
+                  "homepage" homepage)]
+       (page db bus)))
 
 (defn mountndt [page db bus]
   (rum/mount (page db bus)

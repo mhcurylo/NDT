@@ -4,8 +4,9 @@
 
 ;; setting up database with schemas
 (def conn (d/create-conn {
-  :status/route {}
-  :status/auth {}
+  :app/title {:db/unique :db.unique/identity}
+  :app/page  {}
+  :app/auth {}
   :form/name {:db/unique :db.unique/identity}
   :form/inputs {:db/cardinality :db.cardinality/many
                 :db/type :db.type/ref}
@@ -32,6 +33,9 @@
                                   [:input/name "loginform/password"]]}
                    ])
 
+(d/transact! conn [{:app/title "ndt"
+                    :app/page  "loginpage"
+                    :app/auth false}])
 ;;helper functions
 (defn getentval [ent valkey]
   (valkey ent))
