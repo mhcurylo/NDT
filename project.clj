@@ -1,6 +1,6 @@
 (defproject ndt "0.1.0-SNAPSHOT"
-  :description "FIXME: write description"
-  :url "http://example.com/FIXME"
+  :description "NDT PROJECT"
+  :url "https://github.com/mhcurylo/NDT"
   :license {:name "Eclipse Public License"
             :url "http://www.eclipse.org/legal/epl-v10.html"}
 
@@ -12,6 +12,10 @@
                  [bk/ring-gzip "0.1.1"]
                  [ring.middleware.logger "0.5.0"]
                  [compojure "1.5.0"]
+                 [org.clojure/core.async "0.2.391"
+                  :exclusions [org.clojure/tools.reader]]
+                 [datascript "0.15.5"]
+                 [rum "0.10.5"]
                  [environ "1.0.3"]]
 
   :plugins [[lein-cljsbuild "1.1.3"]
@@ -102,12 +106,12 @@
   :doo {:build "test"}
 
   :profiles {:dev
-             {:dependencies [[figwheel "0.5.4-4"]
-                             [figwheel-sidecar "0.5.4-4"]
+             {:dependencies [[figwheel "0.5.8"]
+                             [figwheel-sidecar "0.5.8"]
                              [com.cemerick/piggieback "0.2.1"]
                              [org.clojure/tools.nrepl "0.2.12"]]
 
-              :plugins [[lein-figwheel "0.5.4-4"]
+              :plugins [[lein-figwheel "0.5.8"]
                         [lein-doo "0.1.6"]]
 
               :source-paths ["dev"]

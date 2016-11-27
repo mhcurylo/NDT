@@ -1,3 +1,30 @@
-h1 {
-  text-decoration: underline;
+/* some style */
+#ndtlogo {
+  color: white;
+  background: black;
+  width: 20em;
+  height: 20em;
+  border-radius: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: auto;
+  margin-top: 5em
+}
+
+#ndtlogo p {
+ margin: 0px;
+}
+
+.blank {
+  min-height: 2em;
+  width: 100%;
+}
+
+.pull-left {
+  float: left;
+}
+
+.pull-right {
+  float: right;
 }

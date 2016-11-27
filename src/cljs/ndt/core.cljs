@@ -1,6 +1,19 @@
-(ns ndt.core)
+(ns ndt.core
+  (:require 
+    [cljs.core.async :as async]
+    [rum.core :as rum]
+    [datascript.core :as d]
+    [ndt.ui :as ui]
+    [ndt.eb :as eb]
+    [ndt.ds :as ds]))
 
 (enable-console-print!)
 
-(set! (.-innerHTML (js/document.getElementById "app"))
-      "<h1>Hello Chestnut!</h1>")
+(ui/mountndt ui/loginpage ds/conn eb/event-bus)
+
+(d/listen! ds/conn
+   (fn [tx-data]
+     (ui/mountndt ui/loginpage ds/conn eb/event-bus)))
+
+;;(defn fig-reload-hook []
+;; ((ui/mountndt ui/loginpage ds/conn eb/event-bus))

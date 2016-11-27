@@ -1,5 +1,8 @@
-# ndt
+# NDT
 
+This is frontend and backend of NDT.
+
+It is based on chestnut template for fullstack dev.
 
 ## Development
 
