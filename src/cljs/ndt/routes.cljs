@@ -4,6 +4,7 @@
     [cljs.core.async :as async]
     [secretary.core :as secretary :refer-macros [defroute]]
     [ndt.ds :as ds]
+    [ndt.ls :as ls]
     [goog.events])
   (:import [goog.history Html5History EventType])) 
 
@@ -34,7 +35,7 @@
 (defn handle-url-change [e h]
   (when-not (.-isNavigation e)
             (js/window.scrollTo 0 0))
-  (if (or (:app/auth (d/entity @ds/conn [:app/title "ndt"])) (= (get-token) (login))) 
+  (if (or (ls/is-token-valid?) (= (get-token) (login))) 
     (secretary/dispatch! (get-token))
     (.setToken h (login))))
 

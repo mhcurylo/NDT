@@ -13,6 +13,8 @@
                  [bk/ring-gzip "0.1.1"]
                  [ring.middleware.logger "0.5.0"]
                  [compojure "1.5.0"]
+                 [buddy/buddy-sign "1.3.0"]
+                 [buddy/buddy-auth "1.3.0"]
                  [org.clojure/core.async "0.2.391"
                   :exclusions [org.clojure/tools.reader]]
                  [datascript "0.15.5"]
