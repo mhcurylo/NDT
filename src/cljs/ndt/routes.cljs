@@ -32,7 +32,6 @@
   (navigatedbpage "homepage"))
 
 (defn handle-url-change [e h]
-  (js/console.log (login) (get-token))
   (when-not (.-isNavigation e)
             (js/window.scrollTo 0 0))
   (if (or (:app/auth (d/entity @ds/conn [:app/title "ndt"])) (= (get-token) (login))) 

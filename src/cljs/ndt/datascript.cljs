@@ -15,22 +15,30 @@
   :input/placeholder {}
   :input/value {}
   :input/type {}
+  :input/required {}
+  :input/disabled {}
+  :error/name {:db/unique :db.unique/identity}
+  :error/msg {} 
 }))
 
 ;;initiating database with default values / needed data
 (d/transact! conn [{:input/name "loginform/name"
                     :input/label "Name"
                     :input/placeholder "Enter your name"
+                    :input/required true
                     :input/value ""
                     :input/type "text"}
                    {:input/name "loginform/password"
                     :input/label "Password"
                     :input/placeholder "Enter your password"
+                    :input/required true
                     :input/value ""
                     :input/type "password"}
                    {:form/name "loginform"
                     :form/inputs [[:input/name "loginform/name"]
                                   [:input/name "loginform/password"]]}
+                   {:error/name "loginpage/error"
+                    :error/msg  "" }
                    ])
 
 (d/transact! conn [{:app/title "ndt"

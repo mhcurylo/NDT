@@ -1,4 +1,41 @@
 /* some style */
+button[disabled] {
+  color: #ccc;
+  border-color: #ccc;
+  text-shadow: none;
+}
+form {
+  margin-bottom: 0rem;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.text-left {
+  text-align: left;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.errorbar {
+  display: flex;
+  align-items: center;
+  height: 2em;
+  margin-bottom: 1rem;
+  margin-top: 0rem;
+}
+
+.errorbar-msg {
+  font-size: 1em;
+}
+
+.errorbar-msg.red {
+  color: red;
+}
+
 #ndtlogo {
   color: white;
   background: black;
@@ -27,4 +64,8 @@
 
 .pull-right {
   float: right;
+}
+
+.errorbar {
+  
 }
