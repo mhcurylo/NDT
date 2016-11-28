@@ -15,9 +15,10 @@
     (js/JSON.parse tokstr)))
 
 (defn is-token-valid? []
-  (let [tk (* 1000 (.-exp (token-info)))]
-    (js/console.log tk (.getTime (js/Date.)))
-    (> tk (.getTime (js/Date.)))))
+  (if (token)
+    (let [tk (* 1000 (.-exp (token-info)))]
+      (js/console.log tk (.getTime (js/Date.)))
+      (> tk (.getTime (js/Date.))))))
 
 (defn token-rm! []
   (.removeItem (.-localStorage js/window) "jws"))

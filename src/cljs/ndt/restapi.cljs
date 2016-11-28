@@ -8,6 +8,6 @@
   (go (let [res (async/<! (http/post "/api/login" {:json-params {:username username :password password}}))]
       (if (= (:status res) 200)
         (do (ls/token! (:token (:body res)))
-            {:auth true})
+            true)
         (do (ls/token-rm!)
-            {:auth false})))))
+            false)))))

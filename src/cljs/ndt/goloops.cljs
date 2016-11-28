@@ -9,6 +9,10 @@
       [ndt.macros :refer [go-loop-sub]]
       [cljs.core.async.macros :refer [go go-loop]]))
 
+(defn setinputvalue [db inputname newval]
+  (d/transact! db [{:input/name inputname
+                    :input/value newval}]))
+
 (defn authenticateuser [db auth]
   (d/transact! db [{:app/title "ndt"
                     :app/auth auth}]))
@@ -21,8 +25,7 @@
                     :error/msg errormsg}]))
 
 (go-loop-sub eb/event-bus-pub :set-input-value [_ db inputname newval]
-             (d/transact! db [{:input/name inputname
-                               :input/value newval}]))
+             (setinputvalue db inputname newval))
 
 (go-loop-sub eb/event-bus-pub :submit-login-form [_ db]
              (authenticateuser db false)
@@ -30,6 +33,8 @@
                                         (getinputvalue db "loginform/password")]]
                (if (async/<! (api/login username password))
                    (do (authenticateuser db true)
+                       (setinputvalue db "loginform/name" "")
+                       (setinputvalue db "loginform/password" "")
                        (errormsg! db "loginpage/error" "")
                        (r/nav! "/"))
                    (do (errormsg! db "loginpage/error" "Wrong user credintials.")))))
