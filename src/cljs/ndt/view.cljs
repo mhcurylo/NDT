@@ -37,7 +37,8 @@
 (rum/defc loginform [db bus]
   [:#loginform [:.blank] 
                (renderforminputs db bus (:form/inputs (d/entity @db [:form/name "loginform"])))
-               [:button.pull-right "SUBMIT"]])
+               [:button.pull-right {:on-click (fn [] (async/put! bus [:submit-login-form db]))}
+                "SUBMIT"]])
 
 
 (rum/defc loginpage [db bus]
@@ -48,11 +49,16 @@
      [:.row [:.three.columns]
             [:.six-columns [:h1 "Logged in, you are home."]]])
 
+(rum/defc blankpage [db bus]
+     [:div])
+
 (rum/defc routerpage [db bus]
      (let [page (case (currentpage db) 
                   "loginpage" loginpage
-                  "homepage" homepage)]
+                  "homepage" homepage
+                  blankpage)]
        (page db bus)))
+
 
 (defn mountndt [page db bus]
   (rum/mount (page db bus)

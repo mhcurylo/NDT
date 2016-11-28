@@ -6,6 +6,7 @@
     [ndt.ui :as ui]
     [ndt.eb :as eb]
     [ndt.ds :as ds]
+    [ndt.go :as go]
     [ndt.routes :as routes]))
 
 (enable-console-print!)
@@ -15,6 +16,3 @@
 (d/listen! ds/conn
    (fn [tx-data]
      (ui/mountndt ui/routerpage ds/conn eb/event-bus)))
-
-(routes/inithistory)
-

@@ -27,14 +27,14 @@
                     :input/label "Password"
                     :input/placeholder "Enter your password"
                     :input/value ""
-                    :input/type "text"}
+                    :input/type "password"}
                    {:form/name "loginform"
                     :form/inputs [[:input/name "loginform/name"]
                                   [:input/name "loginform/password"]]}
                    ])
 
 (d/transact! conn [{:app/title "ndt"
-                    :app/page  "loginpage"
+                    :app/page  ""
                     :app/auth false}])
 ;;helper functions
 (defn getentval [ent valkey]
