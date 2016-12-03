@@ -1,4 +1,4 @@
-(ns ndt.ls
+(ns ndt.data.localstorage
   (:require [goog.crypt.base64 :as b64]
             [clojure.string :as str]))
 

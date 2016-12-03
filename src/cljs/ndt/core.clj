@@ -1,4 +1,4 @@
-(ns ndt.macros
+(ns ndt.core
     (:require
                   [cljs.core.async.macros :refer [go-loop]]))
 

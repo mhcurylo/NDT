@@ -1,10 +1,10 @@
-(ns ndt.routes
+(ns ndt.actions.routes
   (:require 
     [datascript.core :as d]
     [cljs.core.async :as async]
     [secretary.core :as secretary :refer-macros [defroute]]
-    [ndt.ds :as ds]
-    [ndt.ls :as ls]
+    [ndt.data.datascript :as ds]
+    [ndt.data.localstorage :as ls]
     [goog.events])
   (:import [goog.history Html5History EventType])) 
 

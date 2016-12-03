@@ -1,6 +1,6 @@
-(ns ndt.restapi
+(ns ndt.remote.restapi
   (:require-macros [cljs.core.async.macros :refer [go]])
-  (:require [ndt.ls :as ls]
+  (:require [ndt.data.localstorage :as ls]
             [cljs-http.client :as http]
             [cljs.core.async :as async]))
 

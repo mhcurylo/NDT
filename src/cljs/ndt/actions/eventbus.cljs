@@ -1,4 +1,4 @@
-(ns ndt.eb
+(ns ndt.actions.eventbus
   (:require 
     [cljs.core.async :as async]))
 

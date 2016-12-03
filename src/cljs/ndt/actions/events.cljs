@@ -1,12 +1,12 @@
-(ns ndt.go
+(ns ndt.actions.events
   (:require 
     [datascript.core :as d]
     [cljs.core.async :as async]
-    [ndt.routes :as r]
-    [ndt.restapi :as api]
-    [ndt.eb :as eb])
+    [ndt.actions.routes :as r]
+    [ndt.remote.restapi :as api]
+    [ndt.actions.eventbus :as eb])
     (:require-macros
-      [ndt.macros :refer [go-loop-sub]]
+      [ndt.core :refer [go-loop-sub]]
       [cljs.core.async.macros :refer [go go-loop]]))
 
 (defn setinputvalue [db inputname newval]

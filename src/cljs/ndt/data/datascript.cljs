@@ -1,4 +1,4 @@
-(ns ndt.ds
+(ns ndt.data.datascript
   (:require 
     [datascript.core :as d]))
 
@@ -44,8 +44,5 @@
 (d/transact! conn [{:app/title "ndt"
                     :app/page  ""
                     :app/auth false}])
-;;helper functions
-(defn getentval [ent valkey]
-  (valkey ent))
 
 

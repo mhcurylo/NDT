@@ -1,13 +1,12 @@
-(ns ndt.ui
+(ns ndt.view.loginpage
   (:require 
     [cljs.core.async :as async]
     [rum.core :as rum]
     [datascript.core :as d]
-    [clojure.string :as string]
-    [ndt.ds :as ds]))
+    [clojure.string :as string]))
 
-(defn currentpage [db]
-  (:app/page (d/entity @db [:app/title "ndt"])))
+(defn getentval [ent valkey]
+  (valkey ent))
 
 (defn setnbsp []
   {:dangerouslySetInnerHTML {:__html "&nbsp;"}})
@@ -22,7 +21,7 @@
 
 (rum/defc textinput [db bus forminputs] 
   (let [[inputname label placeholder inputvalue inputtype disabled] 
-        (map (partial ds/getentval forminputs) 
+        (map (partial getentval forminputs) 
              [:input/name
               :input/label
               :input/placeholder
@@ -58,23 +57,3 @@
 (rum/defc loginpage [db bus]
      [:.row [:.three.columns (setnbsp)]
             [:.six.columns (ndtlogo) (loginform db bus)]])
-
-(rum/defc homepage [db bus]
-     [:.row [:.three.columns]
-            [:.six-columns [:h1 "Logged in, you are home."]]])
-
-(rum/defc blankpage [db bus]
-     [:div])
-
-(rum/defc routerpage [db bus]
-     (let [page (case (currentpage db) 
-                  "loginpage" loginpage
-                  "homepage" homepage
-                  blankpage)]
-       (page db bus)))
-
-
-(defn mountndt [page db bus]
-  (rum/mount (page db bus)
-           (. js/document (getElementById "app"))))
-
