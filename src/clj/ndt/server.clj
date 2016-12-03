@@ -38,11 +38,11 @@
   (context "/api" [] 
     (defroutes api-routes
       (POST "/login" {body :body} (authenticate body))))
-  (GET "/" _
+  (resources "/")
+  (GET "*" _
     {:status 200
      :headers {"Content-Type" "text/html; charset=utf-8"}
-     :body (io/input-stream (io/resource "public/index.html"))})
-  (resources "/"))
+     :body (io/input-stream (io/resource "public/index.html"))}))
 
 (def auth-backend (jws-backend {:secret secret :options {:alg :hs512}}))
 
